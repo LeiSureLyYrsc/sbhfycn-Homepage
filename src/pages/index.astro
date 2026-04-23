@@ -24,7 +24,7 @@ const gridColsClasses: Record<number, string> = {
       </aside>
 
       <!-- Right Content Area -->
-      <section class="flex-1 space-y-12 xl:space-y-16 lg:py-0 pb-40 transition-all duration-500 min-w-0">
+      <section class="flex-1 space-y-12 xl:space-y-16 lg:pt-0 pb-28 lg:pb-48 transition-all duration-500 min-w-0">
         {siteConfig.categories.map((category) => {
           const maxCols = category.maxItemsPerRow || 4;
           const gridClass = gridColsClasses[maxCols] || gridColsClasses[4];
