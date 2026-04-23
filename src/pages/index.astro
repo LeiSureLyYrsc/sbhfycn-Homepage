@@ -18,13 +18,13 @@ const gridColsClasses: Record<number, string> = {
   <main class="w-full min-h-screen p-4 md:p-8 lg:p-10 2xl:p-16 flex lg:items-start justify-center transition-all duration-500">
     <div class="w-full max-w-[1600px] flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-14 2xl:gap-16 transition-all duration-500">
       
-      <!-- Left Sidebar -->
-      <aside class="w-full lg:w-[280px] xl:w-[320px] shrink-0 lg:sticky lg:top-12 h-auto lg:h-max transition-all duration-500">
+      <!-- Left Sidebar | 左边信息栏内容 -->
+      <aside class="w-full lg:w-1/4">
         <Sidebar />
       </aside>
 
-      <!-- Right Content Area -->
-      <section class="flex-1 space-y-12 xl:space-y-16 lg:pt-0 pb-28 lg:pb-48 transition-all duration-500 min-w-0">
+      <!-- Right Content Area | 右边内容与页脚 -->
+      <section class="flex-1 space-y-12 xl:space-y-16 lg:pt-0 pb-28 lg:pb-38 transition-all duration-500 min-w-0">
         {siteConfig.categories.map((category) => {
           const maxCols = category.maxItemsPerRow || 4;
           const gridClass = gridColsClasses[maxCols] || gridColsClasses[4];
