@@ -16,7 +16,7 @@ export interface Category {
 export const siteConfig = {
   siteTitle: "Murasame's Homepage",
   faviconUrl: "/avatar.jpg", // 在这里修改您的网站图标（favicon）链接
-  backgroundUrl: "./public/static/Murasame.jpg", // 在这里修改您的自定义背景图链接
+  backgroundUrl: "/static/Murasame.jpg", // 在这里修改您的自定义背景图链接
   footer: "Powered by <a href='https://github.com/LeiSureLyYrsc' target='_blank'>MurasameNoa</a> | © 2026<br> <a href='https://beian.miit.gov.cn/' target='_blank'>鄂ICP备2015120188号-3</a>", // 配置底层页脚支持正常HTML语法
   blurConfig: {
     glassBlur: "24px", // 毛玻璃卡片的模糊度
@@ -30,7 +30,7 @@ export const siteConfig = {
     defaultEnabled: true, // 页面默认是否开启模糊
   },
   profile: {
-    avatarUrl: "http://q.qlogo.cn/headimg_dl?dst_uin=3165987081&spec=640",
+    avatarUrl: "/avatar.jpg",
     names: ["Murasame", "丛雨", "ムラサメ"], // 名字，支持打字机滚动效果显示多个
     typewriterName: true, // 是否开启名字的打字机滚动效果
     roles: ["Ciallo～(∠・ω< )⌒★", "柚子厨", "最爱丛雨"], // 身份描述
