@@ -18,6 +18,7 @@ export const siteConfig = {
   faviconUrl: "/avatar.jpg", // 在这里修改您的网站图标（favicon）链接
   backgroundUrl: "/static/Murasame.jpg", // 在这里修改您的自定义背景图链接
   footer: "Powered by <a href='https://github.com/LeiSureLyYrsc' target='_blank'>MurasameNoa</a> | © 2026<br> <a href='https://beian.miit.gov.cn/' target='_blank'>鄂ICP备2015120188号-3</a>", // 配置底层页脚支持正常HTML语法
+  footerIsFixed: false, // 页脚是否常驻悬浮于底部。设为 true 时固定悬浮，设为 false 时随页面滚动到底部显示
   blurConfig: {
     glassBlur: "24px", // 毛玻璃卡片的模糊度
     bgBlur: "24px", // 背景层的模糊度
