@@ -21,11 +21,11 @@ export const siteConfig = {
   footerIsFixed: false, // 页脚是否常驻悬浮于底部。设为 true 时固定悬浮，设为 false 时随页面滚动到底部显示
   blurConfig: {
     glassBlur: "24px", // 毛玻璃卡片的模糊度
-    bgBlur: "24px", // 背景层的模糊度
+    bgBlur: "30px", // 背景层的模糊度
     bgScale: "1.05", // 背景层抗白边的放大比例
     enableHoverZoom: true, // 是否开启鼠标悬停时的背景放大动画
     hoverZoomScale: "1.3", // 鼠标悬停时的背景放大比例
-    hoverZoomDelay: 300, // 鼠标悬停放大动画的触发延迟时间(毫秒)
+    hoverZoomDelay: 350, // 鼠标悬停放大动画的触发延迟时间(毫秒)
     bgDrift: true, // 是否开启背景图的缓慢漂浮动画
     showToggle: true, // 是否在左侧个人介绍显示模糊开关
     defaultEnabled: true, // 页面默认是否开启模糊
