@@ -34,13 +34,21 @@ const gridColsClasses: Record<number, string> = {
               <span class="w-8 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full inline-block"></span>
               {category.name}
             </h2>
-            <div class={`grid ${gridClass} gap-6 xl:gap-8 transition-all duration-500`}>
-              {category.links.map((link) => (
-                <div class="transition-all duration-500 h-full">
-                  <NavCard link={link} />
+            {category.is_remoteuri && category.remote_uri ? (
+              <div class="relative w-full overflow-hidden remote-category min-h-[100px]" data-uri={category.remote_uri} data-gridclass={gridClass} data-name={category.name}>
+                <div class={`grid ${gridClass} gap-6 xl:gap-8 transition-all duration-500 remote-grid`}>
+                  {/* Skeleton loader and glass lock screen will be injected here by client JS */}
                 </div>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <div class={`grid ${gridClass} gap-6 xl:gap-8 transition-all duration-500`}>
+                {category.links && category.links.map((link) => (
+                  <div class="transition-all duration-500 h-full">
+                    <NavCard link={link} />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           );
         })}
@@ -49,6 +57,76 @@ const gridColsClasses: Record<number, string> = {
     </div>
   </main>
 </Layout>
+
+<script>
+  import { ToastManager, initNotices } from '../scripts/toast';
+  import { renderSkeletons, renderLockOverlay, renderLinks } from '../scripts/remoteCategories';
+
+  // Show config notices
+  document.addEventListener('DOMContentLoaded', () => {
+    initNotices();
+  });
+
+  // Main logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const remoteCategories = document.querySelectorAll('.remote-category');
+    
+    remoteCategories.forEach(async (container) => {
+      const uri = container.getAttribute('data-uri');
+      const gridElement = container.querySelector('.remote-grid');
+      if (!uri || !gridElement) return;
+
+      try {
+        const res = await fetch(uri);
+        if (res.status === 429) {
+          throw new Error("429");
+        }
+        const data = await res.json();
+        
+        // Provide skeletons
+        const count = data.link_count || 4;
+        renderSkeletons(gridElement, count);
+
+        if (data.need_pwd && data.challenge) {
+          renderLockOverlay(container, gridElement, data.challenge, uri);
+        } else if (data.links && !data.need_pwd) {
+          container.classList.remove('min-h-[100px]');
+          renderLinks(gridElement, data.links);
+          ToastManager.show({
+            title: "获取成功",
+            message: "已免密获取远程链接",
+            type: "success",
+            icon: "fa-solid fa-cloud-arrow-down",
+            position: "top-right",
+            duration: 3000
+          });
+        }
+      } catch (e: any) {
+        if (e.message === "429") {
+          gridElement.innerHTML = '<div class="col-span-full p-4 text-center text-amber-500 bg-amber-100/10 rounded-lg">请求过于频繁，请稍后再试</div>';
+          ToastManager.show({
+            title: "被后端服务器拉黑",
+            message: "您的请求过于频繁，已被远程服务器暂时拉黑，请稍后再试",
+            type: "warning",
+            icon: "fa-solid fa-hand",
+            position: "top-right",
+            duration: 5000
+          });
+        } else {
+          gridElement.innerHTML = '<div class="col-span-full p-4 text-center text-red-500 bg-red-100/10 rounded-lg">获取远端分类失败</div>';
+          ToastManager.show({
+            title: "网络错误",
+            message: "无法连接到远程服务器获取数据",
+            type: "error",
+            icon: "fa-solid fa-server",
+            position: "top-right",
+            duration: 5000
+          });
+        }
+      }
+    });
+  });
+</script>
 
 <style>
   /* Hide scrollbar for Chrome, Safari and Opera */

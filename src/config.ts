@@ -10,7 +10,18 @@ export interface LinkData {
 export interface Category {
   name: string;
   maxItemsPerRow?: number; // 特定分类的每行最多显示数量，如果不填则默认使用全局默认值
-  links: LinkData[];
+  is_remoteuri?: boolean; // 是否为远程服务器传链服务
+  remote_uri?: string; // 远端服务器链接
+  links?: LinkData[];
+}
+
+export interface Notice {
+  title?: string;
+  message: string;
+  type?: 'info' | 'success' | 'warning' | 'error';
+  icon?: string; // Font Awesome
+  position?: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+  duration?: number; // millisecond, 0 for persistent
 }
 
 export const siteConfig = {
@@ -51,11 +62,28 @@ export const siteConfig = {
       fa: "fa-solid fa-envelope text-xl"
     }
   ],
+  notices: [
+    {
+      title: "欢迎访问",
+      message: "这里是 Murasame 的个人主页，很高兴见到您！",
+      type: "info",
+      icon: "fa-solid fa-bell",
+      position: "top-right",
+      duration: 5000
+    }
+  ] as Notice[],
   internalLinks: [
     { name: "另一个主页", url: "https://shirayukinoa.top", fa: "fa-solid fa-house" },
     { name: "我的博客", url: "https://blog.shirayukinoa.top", fa: "fa-solid fa-pen-nib" }
   ],
   categories: [
+    {
+      name: "远程后端地址测试",
+      maxItemsPerRow: 2,
+      is_remoteuri: true,
+      remote_uri: "https://remotelink.sbhfy.cn/api/links/2", // 请修改为真实的远程服务器地址
+      links: []
+    },
     {
       name: "俺自己的服务",
       maxItemsPerRow: 2,
