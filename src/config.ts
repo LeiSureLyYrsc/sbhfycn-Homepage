@@ -73,19 +73,19 @@ export const siteConfig = {
     }
   ] as Notice[],
   internalLinks: [
-    { name: "另一个主页", url: "https://shirayukinoa.top", fa: "fa-solid fa-house" },
-    { name: "我的博客", url: "https://blog.shirayukinoa.top", fa: "fa-solid fa-pen-nib" }
+    { name: "Another Homepage", url: "https://shirayukinoa.top", fa: "fa-solid fa-house" },
+    { name: "博客", url: "https://blog.shirayukinoa.top", fa: "fa-solid fa-pen-nib" }
   ],
   categories: [
     {
-      name: "远程后端地址测试",
+      name: "🤔远程链接后端地址测试",
       maxItemsPerRow: 2,
       is_remoteuri: true,
       remote_uri: "https://remotelink.sbhfy.cn/api/links/2", // 请修改为真实的远程服务器地址
       links: []
     },
     {
-      name: "俺自己的服务",
+      name: "😊站长自部署服务",
       maxItemsPerRow: 2,
       links: [
         { title: "Murasame's Sharepoint", url: "https://share.shirayukinoa.top", description: "基于 Openlist 的云盘服务", fa: "fa-solid fa-cloud" },
@@ -93,19 +93,20 @@ export const siteConfig = {
       ]
     },
     {
-      name: "常用工具",
+      name: "💻开发/部署平台",
+      maxItemsPerRow: 3,
       links: [
-        { title: "Deepseek", url: "https://chat.deepseek.com", description: "探索未至之境", fa: "fa-solid fa-brain" },
         { title: "GitHub", url: "https://github.com", description: "全球最大的开源社区", fa: "fa-brands fa-github" },
         { title: "Vercel", url: "https://vercel.com", description: "优秀的静态网站托管平台", fa: "fa-solid fa-bolt" },
         { title: "Cloudflare", url: "https://cloudflare.com", description: "CDN与全能服务", fa: "fa-brands fa-cloudflare" }
       ]
     },
     {
-      name: "设计 & 开发",
+      name: "🎉好玩的",
+      maxItemsPerRow: 4,
       links: [
-        { title: "Astro", url: "https://astro.build", description: "极致性能的前端框架", fa: "fa-solid fa-rocket" },
-        { title: "Tailwind CSS", url: "https://tailwindcss.com", description: "原子化 CSS 框架", fa: "fa-brands fa-css3-alt" }
+        { title: "MikuTap", url: "https://miku.shirayukinoa.top/", description: "Miku钢琴", fa: "fa-solid fa-heart" },
+        { title: "卢浮宫生成器", url: "https://one.last.kiss.sbhfy.cn", description: "我比你想象中更爱你", fa: "fa-solid fa-building-columns" },
       ]
     }
   ]
